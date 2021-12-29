@@ -1,13 +1,15 @@
-public class Droid {
+public class DroidFactory {
     public String serialNumber;
     public String modelType;
     public String purpose;
 
-    public Droid (String droidSerialNumber, String droidModelType, String droidPurpose)
+    Model models = new Model();
+
+    public DroidFactory (String droidSerialNumber)
     {
         serialNumber = droidSerialNumber;
-        modelType = droidModelType;
-        purpose = droidPurpose;
+        modelType = "Undefined";
+        purpose = "Undefined";
     }
 
     public String getSerialNumber() {
@@ -22,16 +24,14 @@ public class Droid {
         return modelType;
     }
 
-    public void setModelType(String modelType) {
-        this.modelType = modelType;
+    public void setModelType(String answer) {
+        models.setModelTypeDroid(answer);
+        modelType = models.modelTypeDroid;
+        purpose = models.purposeDroid;
     }
 
     public String getPurpose() {
         return purpose;
-    }
-
-    public void setPurpose(String purpose) {
-        this.purpose = purpose;
     }
 
     public void speak()
@@ -41,7 +41,7 @@ public class Droid {
 
     @Override
     public String toString() {
-        return "Droid{" +
+        return "DroidFactory{" +
                 "serialNumber='" + serialNumber + '\'' +
                 ", modelType='" + modelType + '\'' +
                 ", purpose='" + purpose + '\'' +
