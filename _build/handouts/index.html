@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <title>Java Fundamentals Demo | Devmountain Foundations</title>
+
+      <link
+        href="_static/pygments.css"
+        rel="stylesheet"
+        type="text/css"
+      />
+      <link href="_static/devmountain.css" rel="stylesheet" type="text/css" />
+          <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+          <link rel="stylesheet" type="text/css" href="_static/devmountain.css" />
+          <link rel="stylesheet" type="text/css" href="_static/plot_directive.css" />
+          <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+
+      <script src="_static/pdfobject.min.js"></script>
+      
+  </head>
+  <body>
+      <div id="handouts-container">
+        <header id="page-header">
+            <p id="project-title">Devmountain Foundations</p>
+            <p id="page-title">Java Fundamentals Demo</p>
+              <p id="backlink">
+                <a href="/"> &laquo; Back to Homepage </a>
+              </p>
+        </header>
+
+        <nav id="page-toc"><ul>
+<li><a class="reference internal" href="#">Java Fundamentals Demo</a><ul>
+<li><a class="reference internal" href="#intro">Intro</a></li>
+<li><a class="reference internal" href="#setup">Setup</a></li>
+<li><a class="reference internal" href="#instructions">Instructions</a></li>
+<li><a class="reference internal" href="#instance-and-static-methods">Instance and Static Methods</a></li>
+<li><a class="reference internal" href="#encapsulation">Encapsulation</a></li>
+<li><a class="reference internal" href="#defending-encapsulation">Defending Encapsulation</a></li>
+<li><a class="reference internal" href="#abstract-classes-and-inheritance">Abstract Classes and Inheritance</a></li>
+<li><a class="reference internal" href="#interfaces">Interfaces</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+
+        <main id="page-content">
+            <section class="section" id="java-fundamentals-demo">
+<h1>Java Fundamentals Demo</h1>
+<section class="section" id="intro">
+<h2>Intro</h2>
+<p>This project is tied to the course entitled “Fundamentals of Object Oriented Programming in Java” on Pluralsight. You can view the course here:</p>
+<p><a class="reference external" href="https://app.pluralsight.com/library/courses/fundamentals-object-oriented-programming-java/table-of-contents" target="_blank">https://app.pluralsight.com/library/courses/fundamentals-object-oriented-programming-java/table-of-contents</a></p>
+<p>The purpose of the exercise is to make sure that you have been able to be hands-on with the course content, and also to build upon the course content to create a new program.</p>
+</section>
+<section class="section" id="setup">
+<h2>Setup</h2>
+<p>Create a new Github repository called <strong>java-fundamentals-demo</strong> and get set up to be able to commit code locally on your machine to the repository.</p>
+</section>
+<section class="section" id="instructions">
+<h2>Instructions</h2>
+<p><strong>When you are finished, add, commit, and push all demo files to your Github repo.</strong></p>
+<p>Lets create a star wars droid factory using what we’ve learned.  We’ll take a piece of the factory from each demo of the Pluralsight course and add onto it while we go:</p>
+</section>
+<section class="section" id="instance-and-static-methods">
+<h2>Instance and Static Methods</h2>
+<p>Lets create the basic pieces of our droid factory  Start by creating a Droid class.  The class should have 3 values, a Serial Number, a Model Type, and a Purpose, for example R2D2 would have the following values:</p>
+<p>Serial Number: “R2D2”
+Model Type: “Astromech”
+Purpose: “Starship repair/support”</p>
+<p>Great!  Remember to add getter methods, setter methods, a constructor, and a toString() method to the Droid class.</p>
+<p>We should also not forget to let R2 speak!  lets create a speak method now.</p>
+<p>If everything is working properly, you should be able to create a new Droid object and set it’s values.  Try printing it out using System.out.println();</p>
+<p>We can also let R2 Speak.  lets invoke his speak method.</p>
+<p>We can now create a singular Droid, but we need to repeat ourselves everytime we need a new droid created.  Lets change that by creating a Droid Factory that will build the droids for us.  Then we only need to create their serial number!</p>
+<p>Lets create the Model as a class of it’s own.  Each model will have the type and purpose of that Droid model.  We can then change our Droid to have a model as well.</p>
+<p>It would be nice for us to be able to just get a basic model when we need one.  Lets create a ModelFactory class that has a static map that holds 3 types of Droid models.  I’ve chosen “Astromech”, “Seeker”, and “Battle”.  Create a static method that will return one of these models based on a keyword.</p>
+<p>Now lets refactor our main method to take advantage of our new static method and separate model.  Recreate your Droid using it’s constructor and get the model from your model factory.</p>
+</section>
+<section class="section" id="encapsulation">
+<h2>Encapsulation</h2>
+<p>We have our droids, but they aren’t very useful they will need tools in order to do their jobs well.  Lets create some for our droids to use, we’ll create a Tool class that has a two variables, a String toolType to represent what kind of tool it is, and an int durability to represent how many more operations the tool can handle before breaking.</p>
+<p>A String type for toolType is fine, but there’s going to be many of these things, perhaps instead of a String, which we would have to define over and over again, perhaps we should only define it once.  Create a Java Enum called ToolType and Add one entry for now called STARSHIP_REPAIR.</p>
+<p>Don’t forget to add getters and setters to the tools class as well as a constructor.  However, instead of allowing the user to specify the durability of the tool in the constructor, the constructor should default the durability to 3.</p>
+<p>Lets add a list of tools to our droid class to represent the tools available to the droid.  Add a new variable to the Droid class called “tools” and make it a list type.  Remember to create getters and setters for it as well as adding to the constructor.</p>
+<p>Great! we now need to change our Main class to be able to build our droid, now with tools.  I’m continuing to build R2D2 so, as he is an astromech droid, I’ll give him 3 Starship repair tools so he can do 9 operations before he’s out of tools.</p>
+<p>R2D2 needs a way to use his repair tools.  Lets create a method in the Droid class called repairStarship, it should take the first available tool that has a STARSHIP_REPAIR as it’s ToolType and decrease the durability by 1, it should then print a message that the starship is repaired.  If the durability reaches the tool should be removed. If no tool is available, the user should be informed.
+Try to make this method yourself and reference the solution code if you need some help.</p>
+<p>Lets have R2D2 do some work, in your main method lets have him attempt repairing the starship 11 times. He should be able to repair the ship 9 times and inform us he has no tool the last 2 times.</p>
+</section>
+<section class="section" id="defending-encapsulation">
+<h2>Defending Encapsulation</h2>
+<p>We’ve created R2D2 and we’ve had him do some work.  If you’re following along with the exercise files we have some work to do to defend our encapsulation.  We need to be able to be certain that objects can only modify their own values, and collections should be using defensive copying. Also, anything that can be made immutable (unable to be changed after being set) should be made so.</p>
+<p>Lets modify each of our classes to incorporate these rules.</p>
+<p>Tool:
+the type of the tool shouldn’t change after being made, lets remove the setter and make the field final. Also anytime this tool is used, it should control its durability loss, lets remove the setDurability method and instead create a useTool method that will lower the durability for us.  We’ll need to change the code in the Droid’s repairStarship method as well.</p>
+<p>Droid:
+A droid’s serial number shouldn’t change, lets make it final and remove it’s setters.
+A Droid should be creating a copy of the list of tools used to create it and make that list final so that a user cannot modify the list after it has been created.
+A droid’s model shouldn’t change after creation either, we’ll make it final and remove any setters.  This by itself doesn’t completely help us unless we also make the fields on the Model final.  This is because a user with access to the Model object itself could simply change the fields on the model object and that would be reflected in R2D2’s model.
+Setting the Droid’s model to final makes sure we can’t assign any other model, but we need to make sure that model doesn’t allow changes either.  Lets do that now.</p>
+<p>Model:
+A models type and purpose shouldn’t be changed after the model is created, lets make both fields final and remove the setters.</p>
+</section>
+<section class="section" id="abstract-classes-and-inheritance">
+<h2>Abstract Classes and Inheritance</h2>
+<p>Up until now we’ve only worked with R2D2 even though we created 2 other types of droid, Protocol and Battle droids.  We should allow our factory to build those droids as well.  The problem is that our Droid class has code that is specific to the Astromech droid.  We should probably have a specific class for each of the droids.</p>
+<p>We also don’t want to repeat ourselves and each of our Droids needs to have their own serial number and should probably have the speak method to default to beeps and boops as well.  We want protocol droids and battle droids to be able to use tools, but should speak in common languages as well.
+This means we should keep Droid as an abstract class.  An abstract class cannot be created, but serves as a base for other classes that will be.  Lets create 3 new Classes, AstromechDroid, ProtocolDroid, and BattleDroid and have them inherit from Droid.</p>
+<p>This means that we need to change R2D2 in the main class to be of type AstromechDroid instead of Droid because abstract classes can no longer be instantiated, that is, created.</p>
+<p>Protocol Droids don’t actually need tools as their main function is speaking and offering advice, but BattleDroids need to be able to shoot things and Astromech Droids need to repair things.  Lets move reepairStarship to the AstromechDroid class. In order to do this we have to change Droid’s tools variable to be protected instead of private.  This simply allows us to access tools from the super class, Droid, in the subclass, AstromechDroid.</p>
+<p>Lets create a new set of tools for our battle droids, we’ll call them rifles and we’ll create a new method on BattleDroid called shootEnemy.  It does basically the same thing as the repairStarship method, but we’ll print that an enemy has been shot instead of a starship repaired.</p>
+<p>Lets add 2 new droids to our main class.  We’ll create C3PO for our protocol Droid, and OOM-9 as our battle droid.</p>
+<p>Lets make a list of Droid types by referencing the Droid superclass and add each of our specialized droids to the list before we have them do any special work like repairing starships or shooting enemies.  Now we’ll see if they can each remember how to speak as they should! Remove all previous references to the speak method and instead create a for loop that loops over each droid and calls their speak method.</p>
+<p>We can see that Droids are still Droids even if they have specialized code.  We also see that the code Overrides still fuction even if we use them from the reference point of a superclass.</p>
+</section>
+<section class="section" id="interfaces">
+<h2>Interfaces</h2>
+<p>We’re almost done, we just need to talk about interfaces.  Interfaces let us assign common functionality to objects that may not be so similar.  Lets create an interface called Defender that will have a singular method, defend.</p>
+<p>The defend method will implement a default method (only available as of java 8).  This assumes that the only available way for a droid to defend itself is to shock it’s enemy.  We’ll print out to the console that the droid shocked the enemy as the default.</p>
+<p>2 of our droids can defend themselves, the BattleDroid and the AstromechDroid.  Lets have both of them implement Defendable.  Our ProtocolDroid is too fearful.  AstromechDroid’s only have access to a shcck attach so implementing the interface is enough.  The Default method will take care of it’s functionality.  The BattleDroid has a rifle thoguh!  Lets have him use that.  We can override defend in BattleDroid and simply have it call it’s shootEnemy method.  Simple.</p>
+<p>Lets have them show off their abilities in the Main Method, Lets create 2 more Droids, an Astromech, R2D5, and a Battle Droid, OOM-7.  Assign them both to a new List of Defenders (note that C3P0 can’t be added to a List&lt;Defender&gt;, ProtocolDroids don’t implment the interface.)  and then loop over them having them call their new defend method.</p>
+<p>Awesome we have built a few droids and shown many of the different uses of Object Oriented Programming in Java.  Feel free to extend the Droid Factory if you wish and add more functionality or play with existing functionality.</p>
+</section>
+</section>
+
+        </main>
+
+        <footer id="page-footer">
+            <p>&copy; 2021 Devmountain</p>
+        </footer>
+      </div>
+
+      <script src="_static/main.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+  </body>
+</html>
