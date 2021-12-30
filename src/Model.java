@@ -8,8 +8,8 @@ public class Model
 
     public Model ()
     {
-        modelTypeDroid = "Undefined";
-        purposeDroid = "Undefined";
+        this.modelTypeDroid = "Undefined";
+        this.purposeDroid = "Undefined";
     }
 
     public String getModelTypeDroid() {
@@ -23,22 +23,22 @@ public class Model
         {
             String temp = model.get("A");
             String[] tempArr = temp.split(",");
-            modelTypeDroid = tempArr[0];
-            purposeDroid = tempArr[1];
+            this.modelTypeDroid = tempArr[0];
+            this.purposeDroid = tempArr[1];
         }
         else if (modelInfo.equals("B") || modelInfo.equals("b"))
         {
             String temp = model.get("B");
             String[] tempArr = temp.split(",");
-            modelTypeDroid = tempArr[0];
-            purposeDroid = tempArr[1];
+            this.modelTypeDroid = tempArr[0];
+            this.purposeDroid = tempArr[1];
         }
         else if (modelInfo.equals("C") || modelInfo.equals("c"))
         {
             String temp = model.get("C");
             String[] tempArr = temp.split(",");
-            modelTypeDroid = tempArr[0];
-            purposeDroid = tempArr[1];
+            this.modelTypeDroid = tempArr[0];
+            this.purposeDroid = tempArr[1];
         }
     }
 

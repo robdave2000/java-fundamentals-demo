@@ -1,15 +1,20 @@
+import java.util.List;
+
 public class DroidFactory {
     public String serialNumber;
     public String modelType;
     public String purpose;
+    public List tools;
 
     Model models = new Model();
 
-    public DroidFactory (String droidSerialNumber)
+    public DroidFactory (String droidSerialNumber, String typeChoice)
     {
         serialNumber = droidSerialNumber;
-        modelType = "Undefined";
-        purpose = "Undefined";
+
+        models.setModelTypeDroid(typeChoice);
+        modelType = models.modelTypeDroid;
+        purpose = models.purposeDroid;
     }
 
     public String getSerialNumber() {
